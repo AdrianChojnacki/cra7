@@ -6,23 +6,30 @@ class App extends Component {
     username: "",
     email: "",
     password: "",
+    accept: false,
   };
 
   handleChange = (e) => {
-    console.log(e.target.type);
-    console.log(e.target.name);
-
     const name = e.target.name;
-    const value = e.target.value;
+    const type = e.target.type;
 
-    this.setState({
-      [name]: value,
-    });
+    if (type === "text" || type === "password" || type === "email") {
+      const value = e.target.value;
+
+      this.setState({
+        [name]: value,
+      });
+    } else if (type === "checkbox") {
+      const checked = e.target.checked;
+
+      this.setState({
+        [name]: checked,
+      });
+    }
   };
 
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log(`Działa`);
   };
 
   render() {
@@ -60,7 +67,13 @@ class App extends Component {
             />
           </label>
           <label htmlFor="accept">
-            <input type="checkbox" />
+            <input
+              type="checkbox"
+              id="accept"
+              name="accept"
+              checked={this.state.accept}
+              onChange={this.handleChange}
+            />
             Wyrażam zgodę
           </label>
           <button>Zapisz się</button>
