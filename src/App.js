@@ -47,7 +47,7 @@ class App extends Component {
             />
           </label>
           <label htmlFor="email">
-            Twoję adres email:
+            Twoję email:
             <input
               type="email"
               id="email"
