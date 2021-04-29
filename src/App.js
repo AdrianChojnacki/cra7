@@ -20,10 +20,15 @@ class App extends Component {
     });
   };
 
+  handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(`Działa`);
+  };
+
   render() {
     return (
       <div>
-        <form>
+        <form onSubmit={this.handleSubmit} noValidate>
           <label htmlFor="username">
             Twoje imię:
             <input
@@ -53,6 +58,10 @@ class App extends Component {
               value={this.state.password}
               onChange={this.handleChange}
             />
+          </label>
+          <label htmlFor="accept">
+            <input type="checkbox" />
+            Wyrażam zgodę
           </label>
           <button>Zapisz się</button>
         </form>
