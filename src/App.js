@@ -5,16 +5,18 @@ class App extends Component {
   state = {
     username: "",
     email: "",
+    password: "",
   };
 
   handleChange = (e) => {
     console.log(e.target.type);
     console.log(e.target.name);
 
-    const username = e.target.value;
+    const name = e.target.name;
+    const value = e.target.value;
 
     this.setState({
-      username,
+      [name]: value,
     });
   };
 
@@ -23,7 +25,7 @@ class App extends Component {
       <div>
         <form>
           <label htmlFor="username">
-            Twoję imię:
+            Twoje imię:
             <input
               type="text"
               id="username"
@@ -38,10 +40,21 @@ class App extends Component {
               type="email"
               id="email"
               name="email"
-              value={this.state.username}
+              value={this.state.email}
               onChange={this.handleChange}
             />
           </label>
+          <label htmlFor="password">
+            Twoje hasło:
+            <input
+              type="password"
+              id="password"
+              name="password"
+              value={this.state.password}
+              onChange={this.handleChange}
+            />
+          </label>
+          <button>Zapisz się</button>
         </form>
       </div>
     );
