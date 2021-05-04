@@ -9,10 +9,10 @@ class App extends Component {
     accept: false,
 
     errors: {
-      username: true,
-      email: true,
-      password: true,
-      accept: true,
+      username: false,
+      email: false,
+      password: false,
+      accept: false,
     },
   };
 
@@ -44,6 +44,31 @@ class App extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
+
+    if (true) {
+      this.setState({
+        username: "",
+        email: "",
+        password: "",
+        accept: false,
+
+        errors: {
+          username: false,
+          email: false,
+          password: false,
+          accept: false,
+        },
+      });
+    } else {
+      this.setState({
+        errors: {
+          username: false,
+          email: false,
+          password: false,
+          accept: false,
+        },
+      });
+    }
   };
 
   render() {
