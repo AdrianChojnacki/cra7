@@ -18,6 +18,11 @@ input[type="checkbox"] {
 
 button {
   display: block;
-  max-width: 200px;
   margin-top: 20px;
+}
+
+span {
+  margin-left: 10px;
+  color: red;
+  font-size: 12px;
 }

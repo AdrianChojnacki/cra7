@@ -7,6 +7,20 @@ class App extends Component {
     email: "",
     password: "",
     accept: false,
+
+    errors: {
+      username: true,
+      email: false,
+      password: false,
+      accept: false,
+    },
+  };
+
+  messages = {
+    username_incorrect: "Nazwa musi być dłuższa niż 10 znaków i nie może zawierać spacji",
+    email_incorrect: "Brak @ w emailu",
+    password_incorrect: "Hasło musi mieć 8 znaków",
+    accept_incorrect: "Nie potwierdzona zgoda",
   };
 
   handleChange = (e) => {
@@ -45,6 +59,7 @@ class App extends Component {
               value={this.state.username}
               onChange={this.handleChange}
             />
+            {this.state.errors.username && <span>{this.messages.username_incorrect}</span>}
           </label>
           <label htmlFor="email">
             Twoję email:
