@@ -46,32 +46,31 @@ class App extends Component {
     e.preventDefault();
 
     const validation = this.formValidation();
-    console.log(validation);
 
-    // if (true) {
-    //   this.setState({
-    //     username: "",
-    //     email: "",
-    //     password: "",
-    //     accept: false,
+    if (validation.correct) {
+      this.setState({
+        username: "",
+        email: "",
+        password: "",
+        accept: false,
 
-    //     errors: {
-    //       username: false,
-    //       email: false,
-    //       password: false,
-    //       accept: false,
-    //     },
-    //   });
-    // } else {
-    //   this.setState({
-    //     errors: {
-    //       username: false,
-    //       email: false,
-    //       password: false,
-    //       accept: false,
-    //     },
-    //   });
-    // }
+        errors: {
+          username: false,
+          email: false,
+          password: false,
+          accept: false,
+        },
+      });
+    } else {
+      this.setState({
+        errors: {
+          username: !validation.username,
+          email: !validation.email,
+          password: !validation.password,
+          accept: !validation.accept,
+        },
+      });
+    }
   };
 
   formValidation = () => {
@@ -84,19 +83,15 @@ class App extends Component {
     if (this.state.username.length > 10 && this.state.username.indexOf(" ") === -1) {
       username = true;
     }
-
     if (this.state.email.indexOf("@") !== -1) {
       email = true;
     }
-
     if (this.state.password.length === 8) {
       password = true;
     }
-
     if (this.state.accept) {
       accept = true;
     }
-
     if (username && email && password && accept) {
       correct = true;
     }
