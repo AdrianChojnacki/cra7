@@ -10,9 +10,9 @@ class App extends Component {
 
     errors: {
       username: true,
-      email: false,
-      password: false,
-      accept: false,
+      email: true,
+      password: true,
+      accept: true,
     },
   };
 
@@ -70,6 +70,7 @@ class App extends Component {
               value={this.state.email}
               onChange={this.handleChange}
             />
+            {this.state.errors.email && <span>{this.messages.email_incorrect}</span>}
           </label>
           <label htmlFor="password">
             Twoje hasło:
@@ -80,6 +81,7 @@ class App extends Component {
               value={this.state.password}
               onChange={this.handleChange}
             />
+            {this.state.errors.password && <span>{this.messages.password_incorrect}</span>}
           </label>
           <label htmlFor="accept">
             <input
@@ -90,6 +92,7 @@ class App extends Component {
               onChange={this.handleChange}
             />
             Wyrażam zgodę
+            {this.state.errors.accept && <span>{this.messages.accept_incorrect}</span>}
           </label>
           <button>Zapisz się</button>
         </form>
